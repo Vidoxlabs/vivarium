@@ -91,7 +91,7 @@ if you would not put it on a public page, do not put it in a commit.
 - [AGENTS.md](AGENTS.md): the context file a code agent reads first.
 - [docs/adr/](docs/adr/): the decisions behind the layout and the product.
 - [docs/vision/design-brief.md](docs/vision/design-brief.md): the product direction.
-- `SETUP.md`: what only the owner can do, and the merge order.
+- [SETUP.md](SETUP.md): what only the owner can do, and the merge order.
 
 ## Security
 

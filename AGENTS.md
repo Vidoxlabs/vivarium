@@ -118,6 +118,6 @@ private details.
   system's own label when it is not implemented yet: implemented, specified, planned,
   observed.
 - Merging is the owner's decision. Open the pull request, keep it green, and leave it for the
-  merge order recorded in `SETUP.md`.
+  merge order recorded in [SETUP.md](SETUP.md).
 
 `CLAUDE.md` holds one line pointing here, matching the family.
