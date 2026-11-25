@@ -105,6 +105,7 @@ Already cloned it without the systems? Run `git submodule update --init --recurs
 | [docs](https://github.com/Vidoxlabs/docs) | The documentation hub, with every system's documentation synced |
 | [videsign](https://github.com/Vidoxlabs/videsign) | The design canon, including the family banner system |
 | [docs/system-map.md](docs/system-map.md) | The generated map and the full pin table |
+| [AGENTS.md](AGENTS.md) | The context file a code agent reads before touching the tree |
 
 ## License
 
