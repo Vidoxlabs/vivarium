@@ -108,6 +108,8 @@ Already cloned it without the systems? Run `git submodule update --init --recurs
 | [AGENTS.md](AGENTS.md) | The context file a code agent reads before touching the tree |
 | [docs/product/](docs/product/) | The product specs: naming, first-run setup, model access, context access |
 | [templates/agent-setup/](templates/agent-setup/) | The agent schema, the setup script, and three generic example agents |
+| [docs/vision/design-brief.md](docs/vision/design-brief.md) | The living product brief: direction, not claims |
+| [docs/adr/](docs/adr/) | The decision records, from the umbrella layout to the web app's context routes |
 
 ## License
 

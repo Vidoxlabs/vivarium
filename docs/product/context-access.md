@@ -53,7 +53,7 @@ an application that has no API. The rule:
 
 ## What a code agent must preserve
 
-- A route is opt-in, named, scoped, and revocable. Adding a route kind amends ADR-0005.
+- A route is opt-in, named, scoped, and revocable. Adding a route kind amends [ADR-0005](../adr/0005-web-app-context-routes.md).
 - Context arrives by reference with its source attached (capillary), not as an anonymous
   blob, and never widens what the agent may do.
 - The companion is outbound-only. A design that needs an inbound connection to the device is

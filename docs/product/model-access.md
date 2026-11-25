@@ -53,7 +53,7 @@ documentation link in settings is the place to say so.
 
 ## What this means for a code agent
 
-- Do not add a fourth route kind without an ADR that amends ADR-0004.
+- Do not add a fourth route kind without an ADR that amends [ADR-0004](../adr/0004-model-access-routes.md).
 - Do not write a key into an agent definition, a log, a test fixture, or an error message.
 - Do not add a hosted plan, a relay, or a bundled credit without the owner's decision: it
   changes who bills whom.

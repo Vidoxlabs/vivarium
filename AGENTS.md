@@ -15,8 +15,8 @@ takes to a model, a file, or a service is one the person switched on.
 
 This repository is the umbrella for seven systems. It pins them at exact commits and gives
 an agent the context to work across them; it holds no product code. The product direction
-lives in `docs/vision/design-brief.md`, and it is direction, not a claim about what runs
-today.
+lives in [docs/vision/design-brief.md](docs/vision/design-brief.md), and it is direction, not a
+claim about what runs today.
 
 ### Naming
 
@@ -91,16 +91,20 @@ Vidoxlabs' own agents are created in the app through the same first-run setup, t
 editors as any user's, and live in the owner's user data, not in any repository. This
 repository ships only generic templates. If something cannot be expressed through setup, it
 is a missing feature for everyone, and it is specified here in public. The decision is
-ADR-0002 in `docs/adr/`. Never add personal agent names or private details.
+[ADR-0002](docs/adr/0002-internal-agents-use-the-public-setup.md). Never add personal agent names or
+private details.
 
 ## Product behaviour an agent must preserve
 
 - **No default autonomy level.** A person chooses one in setup; nothing is preselected and
-  nothing quietly assumes a level. The decision is ADR-0003 in `docs/adr/`.
+  nothing quietly assumes a level. The decision is
+  [ADR-0003](docs/adr/0003-first-run-setup-and-no-default-autonomy.md).
 - **Model access only through routes the person controls.** A subscription the person already
-  pays for, their own API key, or a local model. The decision is ADR-0004 in `docs/adr/`.
+  pays for, their own API key, or a local model. The decision is
+  [ADR-0004](docs/adr/0004-model-access-routes.md).
 - **The web app reaches device context only through opt-in routes**, and a device-only step
-  hands off to the paired companion. The decision is ADR-0005 in `docs/adr/`.
+  hands off to the paired companion. The decision is
+  [ADR-0005](docs/adr/0005-web-app-context-routes.md).
 
 ## Commits and pull requests
 

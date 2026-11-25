@@ -1,7 +1,7 @@
 # Naming
 
 Status: `specified`. This page is the rule for user-facing copy; nothing here claims a
-feature runs today.
+feature runs today. The framing it serves is [the design brief](../vision/design-brief.md).
 
 ## The rule
 
