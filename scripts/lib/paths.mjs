@@ -12,6 +12,8 @@ export const SYSTEMS_DIR = 'systems';
 export const NEEDLES_FILE = 'scripts/scrub-needles.json';
 export const SUMMARY_FILE = '.sync-summary.txt';
 
+export const BODY_FILE = '.sync-body.md';
+
 /** Markers that fence the generated blocks in README.md. */
 export const MARKERS = {
   map: 'vivarium:map',
