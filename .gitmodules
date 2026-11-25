@@ -1,0 +1,42 @@
+[submodule "systems/seed"]
+	path = systems/seed
+	url = https://github.com/Vidoxlabs/seed.git
+	branch = main
+	shallow = true
+	update = checkout
+[submodule "systems/bloom"]
+	path = systems/bloom
+	url = https://github.com/Vidoxlabs/bloom.git
+	branch = main
+	shallow = true
+	update = checkout
+[submodule "systems/capillary"]
+	path = systems/capillary
+	url = https://github.com/Vidoxlabs/capillary.git
+	branch = main
+	shallow = true
+	update = checkout
+[submodule "systems/myosotis"]
+	path = systems/myosotis
+	url = https://github.com/Vidoxlabs/myosotis.git
+	branch = main
+	shallow = true
+	update = checkout
+[submodule "systems/drosera"]
+	path = systems/drosera
+	url = https://github.com/Vidoxlabs/drosera.git
+	branch = main
+	shallow = true
+	update = checkout
+[submodule "systems/aestivation"]
+	path = systems/aestivation
+	url = https://github.com/Vidoxlabs/aestivation.git
+	branch = main
+	shallow = true
+	update = checkout
+[submodule "systems/trellis"]
+	path = systems/trellis
+	url = https://github.com/Vidoxlabs/trellis.git
+	branch = main
+	shallow = true
+	update = checkout

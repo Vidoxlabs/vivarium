@@ -1,0 +1,150 @@
+{
+  "schema": 1,
+  "umbrella": "vivarium",
+  "systems": [
+    {
+      "name": "seed",
+      "path": "systems/seed",
+      "url": "https://github.com/Vidoxlabs/seed",
+      "branch": "main",
+      "commit": "0d158cd7e1fb5098162c98d303ddde8172001062",
+      "version": "0.10.0",
+      "license": "MIT",
+      "layer": "floor",
+      "role": "Harness floor: run records, tool identity, provider adapters, the shared contracts",
+      "owns": [
+        "run contracts and the records an agent leaves behind",
+        "tool identity and registry entries",
+        "provider adapters and the model ladder",
+        "budgets and the autonomy policy record",
+        "the shared contracts every other system builds against"
+      ],
+      "importsToday": [],
+      "agentsFile": "systems/seed/AGENTS.md"
+    },
+    {
+      "name": "capillary",
+      "path": "systems/capillary",
+      "url": "https://github.com/Vidoxlabs/capillary",
+      "branch": "main",
+      "commit": "0caa855cca2780f29d1d11167f4f352ba28ee9f5",
+      "version": "1.3.0",
+      "license": "MIT",
+      "layer": "peer",
+      "role": "Context: bounded retrieval with sources attached, and relations",
+      "owns": [
+        "context pulled in from every route the person turns on",
+        "bounded packets that keep their sources attached",
+        "relations between what the agent knows and where it came from",
+        "by-reference context instead of copies"
+      ],
+      "importsToday": [],
+      "agentsFile": "systems/capillary/AGENTS.md"
+    },
+    {
+      "name": "myosotis",
+      "path": "systems/myosotis",
+      "url": "https://github.com/Vidoxlabs/myosotis",
+      "branch": "main",
+      "commit": "4c7a8b8ef632c8b36a2f92d9be6d1cefdcf10db9",
+      "version": "1.2.0",
+      "license": "MIT",
+      "layer": "peer",
+      "role": "Memory: consent to keep, structural forget",
+      "owns": [
+        "consent to keep a memory, recorded before it is kept",
+        "structural forget that removes the memory, not just the view of it",
+        "per-agent memory scope",
+        "epoch-stamped projections so a forget cannot be undone by a stale read"
+      ],
+      "importsToday": [],
+      "agentsFile": "systems/myosotis/AGENTS.md"
+    },
+    {
+      "name": "drosera",
+      "path": "systems/drosera",
+      "url": "https://github.com/Vidoxlabs/drosera",
+      "branch": "main",
+      "commit": "34c5c29c15f1d1f8baa6de6d5016f4809d68f098",
+      "version": "2.4.0",
+      "license": "MIT",
+      "layer": "peer",
+      "role": "Tools: tool faces, skills, hooks, cookbooks",
+      "owns": [
+        "tool faces and how a tool is offered to an agent",
+        "skills, hooks, and cookbooks",
+        "the connector broker for opt-in context routes",
+        "the tool faces a paired companion exposes"
+      ],
+      "importsToday": [],
+      "agentsFile": "systems/drosera/AGENTS.md"
+    },
+    {
+      "name": "aestivation",
+      "path": "systems/aestivation",
+      "url": "https://github.com/Vidoxlabs/aestivation",
+      "branch": "main",
+      "commit": "f506c9e9a25017ea354e68861ce9112e90d73374",
+      "version": "0.5.0",
+      "license": "MIT",
+      "layer": "peer",
+      "role": "Review and delegation: plans, verdicts, questions to the person, the assembly gate",
+      "owns": [
+        "plan validation before work starts",
+        "verdicts on finished work",
+        "questions to the person, each linked to the setting that caused it",
+        "the assembly gate that holds work back",
+        "holds on actions triggered by untrusted content"
+      ],
+      "importsToday": [],
+      "agentsFile": "systems/aestivation/AGENTS.md"
+    },
+    {
+      "name": "bloom",
+      "path": "systems/bloom",
+      "url": "https://github.com/Vidoxlabs/bloom",
+      "branch": "main",
+      "commit": "4e61cca4ec1d158cd592afcd56a3280489aceedf",
+      "version": "0.12.0",
+      "license": "MIT",
+      "layer": "composer",
+      "role": "User interface: the desktop and web app, first-run setup, the head agent; the only composer",
+      "owns": [
+        "the one place a person raises and runs an agent",
+        "first-run setup and the settings each step points to",
+        "the head agent and its character",
+        "the questions inbox and the pairing screen",
+        "the desktop app and the web app shells"
+      ],
+      "importsToday": [
+        {
+          "name": "drosera",
+          "pin": "7a396c0fa6aeee9eb20f9df0f88bd8992560407b"
+        },
+        {
+          "name": "seed",
+          "pin": "0d158cd7e1fb5098162c98d303ddde8172001062"
+        }
+      ],
+      "agentsFile": "systems/bloom/AGENTS.md"
+    },
+    {
+      "name": "trellis",
+      "path": "systems/trellis",
+      "url": "https://github.com/Vidoxlabs/trellis",
+      "branch": "main",
+      "commit": "76d59fb1edb6b7093ae8a42ca29e4bfbd524f5e1",
+      "version": "0.8.0",
+      "license": "MIT",
+      "layer": "outside",
+      "role": "Testing from outside the call path: shape, behavior, consistency, operational probes",
+      "owns": [
+        "shape, behavior, consistency, and operational probes",
+        "a family grid runner that tests the pinned tree from outside",
+        "setup and pairing probes for the app"
+      ],
+      "importsToday": [],
+      "agentsFile": "systems/trellis/AGENTS.md"
+    }
+  ]
+}
