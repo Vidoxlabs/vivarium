@@ -1,0 +1,127 @@
+name: bump-systems
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  repository_dispatch:
+    types: [system-updated]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bump-systems
+  cancel-in-progress: false
+
+jobs:
+  bump:
+    name: bump
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    steps:
+      - name: Check out the umbrella with every system
+        uses: actions/checkout@v6
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          token: ${{ secrets.VIVARIUM_BOT_TOKEN || github.token }}
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22.13.1
+
+      - name: Find an open bump pull request
+        id: open-pr
+        env:
+          GH_TOKEN: ${{ secrets.VIVARIUM_BOT_TOKEN || github.token }}
+        run: |
+          number=$(gh pr list --repo "$GITHUB_REPOSITORY" --state open \
+            --search 'in:title "Bump system pins"' --json number,headRefName \
+            --jq '.[0].number // empty')
+          branch=$(gh pr list --repo "$GITHUB_REPOSITORY" --state open \
+            --search 'in:title "Bump system pins"' --json number,headRefName \
+            --jq '.[0].headRefName // empty')
+          echo "number=${number}" >> "$GITHUB_OUTPUT"
+          echo "branch=${branch}" >> "$GITHUB_OUTPUT"
+
+      - name: Choose the branch
+        id: branch
+        env:
+          OPEN_BRANCH: ${{ steps.open-pr.outputs.branch }}
+        run: |
+          if [ -n "$OPEN_BRANCH" ]; then
+            git fetch origin "$OPEN_BRANCH"
+            git checkout -B "$OPEN_BRANCH" "origin/$OPEN_BRANCH"
+            echo "branch=${OPEN_BRANCH}" >> "$GITHUB_OUTPUT"
+            echo "existing=true" >> "$GITHUB_OUTPUT"
+          else
+            branch="bump/systems-${GITHUB_RUN_ID}"
+            git checkout -b "$branch"
+            echo "branch=${branch}" >> "$GITHUB_OUTPUT"
+            echo "existing=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Move every pin to the latest main
+        run: npm run sync
+
+      - name: Stop when nothing moved
+        id: moved
+        run: |
+          if [ ! -s .sync-summary.txt ]; then
+            echo "no pins moved; the tree is already current"
+            echo "moved=false" >> "$GITHUB_OUTPUT"
+          else
+            cat .sync-summary.txt
+            echo "moved=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and push
+        if: steps.moved.outputs.moved == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.VIVARIUM_BOT_TOKEN || github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          names=$(sed 's/:.*//' .sync-summary.txt | paste -sd ',' - | sed 's/,/, /g')
+          git add -A
+          git commit -m "chore(systems): bump ${names}"
+          git push origin "HEAD:${{ steps.branch.outputs.branch }}"
+
+      - name: Open the pull request
+        if: steps.moved.outputs.moved == 'true' && steps.branch.outputs.existing == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.VIVARIUM_BOT_TOKEN || github.token }}
+        run: |
+          gh pr create --repo "$GITHUB_REPOSITORY" \
+            --base main \
+            --head "${{ steps.branch.outputs.branch }}" \
+            --title "Bump system pins" \
+            --body-file .sync-body.md
+
+      - name: Refresh the dispatch note on an open pull request
+        if: steps.moved.outputs.moved == 'true' && steps.branch.outputs.existing == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.VIVARIUM_BOT_TOKEN || github.token }}
+          NUMBER: ${{ steps.open-pr.outputs.number }}
+        run: |
+          gh pr comment "$NUMBER" --repo "$GITHUB_REPOSITORY" \
+            --body "$(cat .sync-body.md)"
+
+      - name: Start the required check on the pull request head
+        if: steps.moved.outputs.moved == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.VIVARIUM_BOT_TOKEN || github.token }}
+        run: |
+          # Pull requests opened with GITHUB_TOKEN do not start pull_request
+          # workflows. A dispatch does start a run, so the check status lands on
+          # this head. A token in VIVARIUM_BOT_TOKEN makes the normal events fire.
+          if [ -n "${{ secrets.VIVARIUM_BOT_TOKEN }}" ]; then
+            echo "a bot token is set; the pull_request event already started ci.yml"
+          else
+            gh workflow run ci.yml --repo "$GITHUB_REPOSITORY" --ref "${{ steps.branch.outputs.branch }}"
+          fi
