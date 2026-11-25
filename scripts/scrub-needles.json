@@ -1,0 +1,137 @@
+{
+  "schema": 1,
+  "note": "Hashed forbidden tokens and unsafe patterns for the public-tree scan. A hashed token is never stored in plain text here or anywhere else in this repository; report the digest match by file and line only.",
+  "tokenSha256": [
+    "22d2084f01936c564e690d170959976647b46c843bcb313ff7312fc169dc889c",
+    "89831f5ffc4b30c293c9c3dbc0aac91e38a9c697b374dd105284659c6a992e8a",
+    "101b68072dd659663f14fc77be63743948ada7742d2b8df01698041e1597c420",
+    "efd764d832176b9356c8d0da7a87299e7266020116b12d8423772e3dca349d9e",
+    "71ae1fa73547024d8587234db0746f92a653d0c9a6ac8150d49a146665369eb3",
+    "1980d3927f07fec9c8d727f187ddde727da7e45247dbb71c7555e5ae0eca66d5",
+    "0127ea1e956be78c62bb103bd6453eee623c2c29f526344472dda87757eee7f7",
+    "b273d4d4c217f4faac9bc81e32142477424ba0543540b232c7579db3749a812e",
+    "7cdd92de6eaca59ed5fc22393afb6a907103d58546b9a9451fc45379c443d45c",
+    "bf95f2dfd64b8f0afb7e4a7afcdd76017eda96c285981d0e8883e8fcc3af037a"
+  ],
+  "patterns": [
+    {
+      "id": "workstation-path",
+      "description": "workstation home-directory paths",
+      "source": "(?:/Users/|/home/[A-Za-z0-9._-]+/|[A-Za-z]:\\\\Users\\\\|/private/var/folders/)",
+      "flags": "i",
+      "scope": "both"
+    },
+    {
+      "id": "private-ipv4",
+      "description": "private IPv4 address ranges",
+      "source": "\\b(?:10\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|172\\.(?:1[6-9]|2\\d|3[01])\\.\\d{1,3}\\.\\d{1,3}|192\\.168\\.\\d{1,3}\\.\\d{1,3})\\b",
+      "flags": "",
+      "scope": "both"
+    },
+    {
+      "id": "loopback-host",
+      "description": "loopback and wildcard addresses",
+      "source": "(?:\\b127\\.0\\.0\\.1\\b|\\blocalhost\\b|\\b0\\.0\\.0\\.0\\b|\\b::1\\b)",
+      "flags": "i",
+      "scope": "both"
+    },
+    {
+      "id": "host-with-port",
+      "description": "a host name followed by a port",
+      "source": "\\b(?:[a-z0-9-]+\\.)+(?:com|net|org|io|dev|app|cloud|workers|example|local|internal|home|lan|test|site|page|sh|gg|ai|co|uk|us|xyz):\\d{2,5}\\b",
+      "flags": "i",
+      "scope": "both"
+    },
+    {
+      "id": "workers-subdomain",
+      "description": "workers.dev hostnames",
+      "source": "\\bworkers\\.dev\\b",
+      "flags": "i",
+      "scope": "both"
+    },
+    {
+      "id": "hosting-dashboard",
+      "description": "hosting dashboard URLs",
+      "source": "\\bdash\\.cloudflare\\.com\\b",
+      "flags": "i",
+      "scope": "both"
+    },
+    {
+      "id": "drive-folder",
+      "description": "Drive host links",
+      "source": "\\bdrive\\.google\\.com\\b",
+      "flags": "i",
+      "scope": "both"
+    },
+    {
+      "id": "drive-file",
+      "description": "Docs links that address a file by identifier",
+      "source": "docs\\.google\\.com/[^\\s)<>]*/d/",
+      "flags": "i",
+      "scope": "both"
+    },
+    {
+      "id": "hex32",
+      "description": "a bare 32-character hex identifier",
+      "source": "(?<![0-9a-f])[0-9a-f]{32}(?![0-9a-f])",
+      "flags": "i",
+      "scope": "both"
+    },
+    {
+      "id": "secret-openai",
+      "description": "API key shapes",
+      "source": "\\bsk-[A-Za-z0-9_-]{20,}",
+      "flags": "",
+      "scope": "both"
+    },
+    {
+      "id": "secret-github",
+      "description": "GitHub token shapes",
+      "source": "\\b(?:ghp_|gho_|github_pat_)[A-Za-z0-9_]{10,}",
+      "flags": "",
+      "scope": "both"
+    },
+    {
+      "id": "secret-aws",
+      "description": "AWS access key shapes",
+      "source": "\\bAKIA[0-9A-Z]{16}\\b",
+      "flags": "",
+      "scope": "both"
+    },
+    {
+      "id": "secret-google",
+      "description": "Google API key shapes",
+      "source": "\\bAIza[0-9A-Za-z_-]{35}\\b",
+      "flags": "",
+      "scope": "both"
+    },
+    {
+      "id": "secret-slack",
+      "description": "Slack token shapes",
+      "source": "\\bxox[bp]-[A-Za-z0-9-]{10,}",
+      "flags": "",
+      "scope": "both"
+    },
+    {
+      "id": "model-suffix",
+      "description": "hardware-tagged model name suffixes",
+      "source": "\\b[A-Z][A-Za-z0-9]*-[LC]1\\b",
+      "flags": "",
+      "scope": "both"
+    },
+    {
+      "id": "coined-product-name",
+      "description": "coined product names in the retired prefix pattern",
+      "source": "\\bVi[A-Z][a-z]+",
+      "flags": "",
+      "scope": "both"
+    },
+    {
+      "id": "co-authored-by",
+      "description": "co-author trailers in commit messages",
+      "source": "^\\s*Co-authored-by:",
+      "flags": "im",
+      "scope": "commits"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Check out the umbrella with every system
+        uses: actions/checkout@v6
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22.13.1
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Umbrella checks
+        run: npm run check
+
+      - name: Scan the commit messages
+        if: github.event_name == 'pull_request'
+        run: node scripts/vivarium.mjs check --commits "origin/${{ github.base_ref }}..HEAD"
+
+  systems:
+    name: systems (${{ matrix.system }})
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        system: [seed, capillary, myosotis, drosera, aestivation, bloom, trellis]
+    steps:
+      - name: Check out the umbrella with every system
+        uses: actions/checkout@v6
+        with:
+          submodules: recursive
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22.13.1
+
+      - name: Install the system's dependencies when it has any
+        working-directory: systems/${{ matrix.system }}
+        run: |
+          if node -e 'const p = require("./package.json"); process.exit(Object.keys(p.dependencies || {}).length === 0 ? 0 : 1)'; then
+            echo "no dependencies to install"
+          else
+            npm install --package-lock=false
+          fi
+
+      - name: Run the system's own tests at the pin
+        working-directory: systems/${{ matrix.system }}
+        run: npm test

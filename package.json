@@ -1,0 +1,17 @@
+{
+  "name": "vivarium",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Vivarium: the personal agent platform. Seven systems, one pinned tree.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "sync": "node scripts/vivarium.mjs sync",
+    "check": "node scripts/vivarium.mjs check",
+    "map": "node scripts/vivarium.mjs map",
+    "test": "node --test \"test/*.test.mjs\""
+  }
+}

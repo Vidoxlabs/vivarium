@@ -1,0 +1,106 @@
+{
+  "schema": 1,
+  "umbrella": "vivarium",
+  "systems": [
+    {
+      "name": "seed",
+      "path": "systems/seed",
+      "url": "https://github.com/Vidoxlabs/seed",
+      "branch": "main",
+      "layer": "floor",
+      "role": "Harness floor: run records, tool identity, provider adapters, the shared contracts",
+      "owns": [
+        "run contracts and the records an agent leaves behind",
+        "tool identity and registry entries",
+        "provider adapters and the model ladder",
+        "budgets and the autonomy policy record",
+        "the shared contracts every other system builds against"
+      ]
+    },
+    {
+      "name": "capillary",
+      "path": "systems/capillary",
+      "url": "https://github.com/Vidoxlabs/capillary",
+      "branch": "main",
+      "layer": "peer",
+      "role": "Context: bounded retrieval with sources attached, and relations",
+      "owns": [
+        "context pulled in from every route the person turns on",
+        "bounded packets that keep their sources attached",
+        "relations between what the agent knows and where it came from",
+        "by-reference context instead of copies"
+      ]
+    },
+    {
+      "name": "myosotis",
+      "path": "systems/myosotis",
+      "url": "https://github.com/Vidoxlabs/myosotis",
+      "branch": "main",
+      "layer": "peer",
+      "role": "Memory: consent to keep, structural forget",
+      "owns": [
+        "consent to keep a memory, recorded before it is kept",
+        "structural forget that removes the memory, not just the view of it",
+        "per-agent memory scope",
+        "epoch-stamped projections so a forget cannot be undone by a stale read"
+      ]
+    },
+    {
+      "name": "drosera",
+      "path": "systems/drosera",
+      "url": "https://github.com/Vidoxlabs/drosera",
+      "branch": "main",
+      "layer": "peer",
+      "role": "Tools: tool faces, skills, hooks, cookbooks",
+      "owns": [
+        "tool faces and how a tool is offered to an agent",
+        "skills, hooks, and cookbooks",
+        "the connector broker for opt-in context routes",
+        "the tool faces a paired companion exposes"
+      ]
+    },
+    {
+      "name": "aestivation",
+      "path": "systems/aestivation",
+      "url": "https://github.com/Vidoxlabs/aestivation",
+      "branch": "main",
+      "layer": "peer",
+      "role": "Review and delegation: plans, verdicts, questions to the person, the assembly gate",
+      "owns": [
+        "plan validation before work starts",
+        "verdicts on finished work",
+        "questions to the person, each linked to the setting that caused it",
+        "the assembly gate that holds work back",
+        "holds on actions triggered by untrusted content"
+      ]
+    },
+    {
+      "name": "bloom",
+      "path": "systems/bloom",
+      "url": "https://github.com/Vidoxlabs/bloom",
+      "branch": "main",
+      "layer": "composer",
+      "role": "User interface: the desktop and web app, first-run setup, the head agent; the only composer",
+      "owns": [
+        "the one place a person raises and runs an agent",
+        "first-run setup and the settings each step points to",
+        "the head agent and its character",
+        "the questions inbox and the pairing screen",
+        "the desktop app and the web app shells"
+      ]
+    },
+    {
+      "name": "trellis",
+      "path": "systems/trellis",
+      "url": "https://github.com/Vidoxlabs/trellis",
+      "branch": "main",
+      "layer": "outside",
+      "role": "Testing from outside the call path: shape, behavior, consistency, operational probes",
+      "owns": [
+        "shape, behavior, consistency, and operational probes",
+        "a family grid runner that tests the pinned tree from outside",
+        "setup and pairing probes for the app"
+      ]
+    }
+  ]
+}
