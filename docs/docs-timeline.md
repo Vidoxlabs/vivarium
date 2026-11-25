@@ -5,6 +5,16 @@ Times are ET.
 
 ## 25 November 2026
 
+**Docs hub source** — PR in `Vidoxlabs/docs` #4: adds `vivarium` to `sources.json`, so the hub's
+existing sync carries this repository's README, `AGENTS.md`, and `docs/`. Pins unchanged.
+
+**Setup and close** — PR #8. `SETUP.md`, the owner checklist and merge order, the last timeline
+entries, and a final `npm run sync` and `npm run check` on the top of the stack. Pins unchanged.
+
+**Community files** — PR #7. `CONTRIBUTING.md`, `SECURITY.md`, `.github/CODEOWNERS`,
+`.github/ISSUE_TEMPLATE/` (bug, feature, system pin, config), `.github/PULL_REQUEST_TEMPLATE.md`,
+and `TRADEMARKS.md`. Pins unchanged.
+
 **Docs and decisions** — PR #6. The development timeline, the decision-record index and
 template, ADR-0001 to ADR-0005, and the living product brief in `docs/vision/`. Pins unchanged
 from the previous entry.
@@ -28,7 +38,7 @@ summary-formatter test. Pins unchanged.
 the generated `vivarium.json`, `scripts/vivarium.mjs` with `sync`, `check`, and `map`, the
 scrub list, the unit tests, and `ci.yml`.
 
-Pins at the first six slices:
+Pins through every slice in this run:
 
 | System | Pin |
 | --- | --- |
