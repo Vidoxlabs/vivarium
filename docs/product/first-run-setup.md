@@ -48,18 +48,23 @@ the setup screen renders data rather than a hand-written flow.
 
 ### 4. Autonomy: what it may do without asking
 
-- **Asks**: a level from 1 to 5, with a plain sentence per level, and an optional per-kind
-  override for reading, writing, sending, spending, and deleting.
+- **Asks**: a level from 1 to 5, with a plain sentence per level, and an optional per-class
+  override for the five action classes the brief uses: read, reversible write, external or
+  irreversible, spend, and credential. Credentials ask at every level, including 5.
 - **No preselected option.** The screen opens with nothing chosen. There is no default in the
   schema, no default in the setup script, and no fallback in the app: an agent cannot start
   until the person picks. This is the rule the whole setup exists to protect
   ([ADR-0003](../adr/0003-first-run-setup-and-no-default-autonomy.md)).
-- **Copy**: "Pick a level. At 1 the agent asks about almost everything; at 5 it handles
-  routine work and tells you afterwards. Nothing is chosen for you, and you can change it per
-  kind of action later."
+- **Levels, in the product's words**: 1 Ask me first, 2 Work alongside, 3 Check in, 4 Handle it,
+  5 Run in the background. The action-class table behind them is section 2.3 of
+  [the design brief](../vision/design-brief.md).
+- **Copy**: "Pick a level. At 1 the agent proposes every step; at 5 it acts within budgets and
+  standing rules and you read the journal afterwards. Nothing is chosen for you, credentials
+  always ask, and you can change it per kind of action later."
 - **Stores**: the level and any overrides, as a policy record the runtime reads on every
-  action. Proposed record: `autonomy.policy`.
-- **Change later**: `settings.autonomy.level`, and `settings.autonomy.overrides` per kind.
+  action. Proposed record: `autonomy.policy`, with `overrides` keyed
+  `read`, `write`, `external`, `spend`, `credential`.
+- **Change later**: `settings.autonomy.level`, and `settings.autonomy.overrides` per class.
 
 ### 5. Questions: how it should reach you
 
@@ -108,7 +113,7 @@ the setup screen renders data rather than a hand-written flow.
 
 Every question the agent asks the person during work follows one shape:
 
-> **You set this agent to _ask before anything leaves this computer_.**
+> **You set this agent to _Work alongside_.**
 > It wants to send the summary to a colleague.
 > [Allow once] [Always allow for this kind of action] [Change the setting]
 

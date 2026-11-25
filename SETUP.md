@@ -18,7 +18,8 @@ One pull request per slice, stacked. Each base is the previous branch, so the or
 | 7 | `vivarium` | #7 Add the contributor, security, and issue templates | #6 | Final prose layer |
 | 8 | `vivarium` | #8 Add the setup checklist and close the record | #7 | This page, and the last timeline entries |
 | 9 | `vivarium` | #9 Replace the design brief with the canonical edition | #8 | The brief the rest of the docs explain, verbatim from the owner |
-| 10 | `docs` | #4 Add vivarium to the synced sources | `main` | Independent of the stack; the next docs sync picks vivarium up |
+| 10 | `vivarium` | #10 Use the brief's action classes in the agent setup | #9 | The schema speaks the vocabulary the brief defines |
+| 11 | `docs` | #4 Add vivarium to the synced sources | `main` | Independent of the stack; the next docs sync picks vivarium up |
 
 Squash-merge each one; the ruleset allows squash only. After #1 lands, the required `check`
 check exists for every later pull request, and after #2 lands the bump workflow can run.

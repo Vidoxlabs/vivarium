@@ -5,6 +5,13 @@ Times are ET.
 
 ## 25 November 2026
 
+**Brief vocabulary in the agent setup** — PR #10. The schema's `autonomy.overrides` now uses the
+design brief's five action classes (read, write, external, spend, credential) instead of the
+placeholder set, the setup script carries the brief's five level names, and the question card
+quotes a level by its product name. A test locks the class names, so a future edit cannot drift
+from section 2.3 of the brief. Pins unchanged.
+
+
 **Owner decisions and the canonical brief** — PR #9. `docs/vision/design-brief.md` is replaced with
 the owner's second edition, verbatim, with only the required one-line header added under the title;
 the reconstruction it replaces was written from the owner decisions of the same date and is now

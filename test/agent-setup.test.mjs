@@ -30,6 +30,16 @@ test('the schema declares autonomy as required with no default anywhere', () => 
   assert.ok(!JSON.stringify(schema.properties.autonomy).includes('"default"'));
 });
 
+test('the autonomy overrides use the five action classes the brief uses', () => {
+  const classes = Object.keys(schema.properties.autonomy.properties.overrides.properties);
+  assert.deepEqual(classes, ['read', 'write', 'external', 'spend', 'credential']);
+  for (const { name, document } of examples) {
+    for (const key of Object.keys(document.autonomy.overrides ?? {})) {
+      assert.ok(classes.includes(key), `${name} uses an unknown action class: ${key}`);
+    }
+  }
+});
+
 test('every example leaves the autonomy level to the person', () => {
   for (const { name, document } of examples) {
     assert.equal(document.autonomy.level, 'chosen-in-setup', name);
