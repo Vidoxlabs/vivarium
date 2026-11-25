@@ -17,7 +17,8 @@ One pull request per slice, stacked. Each base is the previous branch, so the or
 | 6 | `vivarium` | #6 Add the timeline, the decision records, and the product brief | #5 | The brief and records are linked from the specs |
 | 7 | `vivarium` | #7 Add the contributor, security, and issue templates | #6 | Final prose layer |
 | 8 | `vivarium` | #8 Add the setup checklist and close the record | #7 | This page, and the last timeline entries |
-| 9 | `docs` | #4 Add vivarium to the synced sources | `main` | Independent of the stack; the next docs sync picks vivarium up |
+| 9 | `vivarium` | #9 Replace the design brief with the canonical edition | #8 | The brief the rest of the docs explain, verbatim from the owner |
+| 10 | `docs` | #4 Add vivarium to the synced sources | `main` | Independent of the stack; the next docs sync picks vivarium up |
 
 Squash-merge each one; the ruleset allows squash only. After #1 lands, the required `check`
 check exists for every later pull request, and after #2 lands the bump workflow can run.
@@ -87,17 +88,67 @@ pull request.
 context, and `docs/` into the hub like any other member's pages. It is independent of the
 `vivarium` stack; merge it whenever. The next scheduled sync run does the copying.
 
+The source list stays where it is, in `docs/sync.md`, with no new capability row (owner decision,
+25 November 2026). If the list ever needs its own ledger entry, that is a later proposal in
+`docs`, not a change here.
+
 ## 8. Put vivarium on the organisation profile
 
 In `Vidoxlabs/.github`, add vivarium to the profile README's repository list and pin it, through
 a normal pull request there. Nothing in this repository depends on it.
 
-## 9. The canonical copy of the product brief
+## 9. The product brief
 
-`docs/vision/design-brief.md` here was written from the owner's decisions of 25 November 2026
-(ADR-0002 to ADR-0005) and the product specs in `docs/product/`, and it says so at the top. If a
-canonical edition exists outside this repository, replace the file with it and record the change
-in `docs/docs-timeline.md`. Nothing else needs to change: the brief is linked, not parsed.
+`docs/vision/design-brief.md` is now the owner's second edition, verbatim, with only the required
+one-line header added under the title. The earlier reconstruction it replaced is recorded in
+`docs/docs-timeline.md`. Nothing else needs to change: the brief is linked, not parsed, so a
+future edition is a one-file pull request.
+
+## 10. Make the seven system checks required, once the first bump is green
+
+The `systems (…)` jobs are advisory today, so a bump pull request could merge with a red system.
+The owner's rule: turn them on only after the first pin-bump run is green on all seven.
+
+When that run exists, run this, replacing `NNNN` with the ruleset id (currently `28075499`):
+
+```bash
+gh api -X PUT repos/Vidoxlabs/vivarium/rulesets/NNNN --input - <<'JSON'
+{
+  "name": "main",
+  "target": "branch",
+  "enforcement": "active",
+  "conditions": { "ref_name": { "include": ["~DEFAULT_BRANCH"], "exclude": [] } },
+  "rules": [
+    { "type": "deletion" },
+    { "type": "non_fast_forward" },
+    { "type": "required_linear_history" },
+    { "type": "pull_request", "parameters": {
+        "required_approving_review_count": 0,
+        "dismiss_stale_reviews_on_push": true,
+        "require_code_owner_review": false,
+        "require_last_push_approval": false,
+        "required_review_thread_resolution": true,
+        "require_extra_approval_for_unattributed_changes": false,
+        "allowed_merge_methods": ["squash"] } },
+    { "type": "required_status_checks", "parameters": {
+        "strict_required_status_checks_policy": true,
+        "required_status_checks": [
+          { "context": "check" },
+          { "context": "systems (seed)" },
+          { "context": "systems (capillary)" },
+          { "context": "systems (myosotis)" },
+          { "context": "systems (drosera)" },
+          { "context": "systems (aestivation)" },
+          { "context": "systems (bloom)" },
+          { "context": "systems (trellis)" }
+        ] } }
+  ]
+}
+JSON
+```
+
+If a context name does not match exactly, the check stays "expected" forever and no pull request
+can merge: read the job names off the first bump run's summary before running this.
 
 ## What this run already did
 
@@ -115,7 +166,9 @@ in `docs/docs-timeline.md`. Nothing else needs to change: the brief is linked, n
 
 - **No merges.** Every pull request is open for the owner.
 - **No Dependabot.** It would open one pull request per submodule and fail the drift check; ADR-0001
-  has the snippet and the extra job adopting it needs.
+  has the snippet and the extra job adopting it needs. The owner confirmed on 25 November 2026
+  that the bump workflow stays the path.
+- **No auto-merge on pin bumps.** The owner merges each bump pull request himself.
 - **No org teams, secrets, tokens, or GitHub Apps.** They are on this page instead.
 - **No website repository, and no local agent workspace touched.**
 - **No pull requests in the seven system repositories.** The work they imply is listed, labelled
