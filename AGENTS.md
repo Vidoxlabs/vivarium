@@ -1,3 +1,5 @@
+<!-- Managed file. Propose changes by pull request; they are carried into the shared templates. hash: c238b8dabe4e57b2 -->
+
 # Vivarium workspace
 
 Vivarium is a public repository. Everything committed here can be read by anyone, so write
