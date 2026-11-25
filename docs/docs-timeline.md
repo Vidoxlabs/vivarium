@@ -5,6 +5,14 @@ Times are ET.
 
 ## 25 November 2026
 
+**Owner decisions and the canonical brief** — PR #9. `docs/vision/design-brief.md` is replaced with
+the owner's second edition, verbatim, with only the required one-line header added under the title;
+the reconstruction it replaces was written from the owner decisions of the same date and is now
+history. `SETUP.md` records the four decisions taken with it: the seven `systems` checks become
+required only after the first pin-bump run is green, pin bumps are merged by the owner with no
+auto-merge, the bump workflow stays the path over Dependabot, and the docs source list stays in
+`docs/sync.md` with no new capability row. Pins unchanged.
+
 **Docs hub source** — PR in `Vidoxlabs/docs` #4: adds `vivarium` to `sources.json`, so the hub's
 existing sync carries this repository's README, `AGENTS.md`, and `docs/`. Pins unchanged.
 
