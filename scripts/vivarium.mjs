@@ -8,7 +8,6 @@ import {
   MANIFEST_FILE,
   README_FILE,
   SUMMARY_FILE,
-  BODY_FILE,
   REPO_ROOT
 } from './lib/paths.mjs';
 import { syncSubmodules } from './lib/git.mjs';
@@ -87,13 +86,11 @@ function sync() {
   const moved = diffPins(previous, manifest);
   const summary = formatSummary(moved);
   fs.writeFileSync(path.join(REPO_ROOT, SUMMARY_FILE), summary ? `${summary}\n` : '');
-  const bodyFile = path.join(REPO_ROOT, BODY_FILE);
-  if (moved.length) {
-    fs.writeFileSync(bodyFile, buildBumpBody({ moved }));
-  } else if (fs.existsSync(bodyFile)) {
-    fs.rmSync(bodyFile);
-  }
   process.stdout.write(summary ? `${summary}\n` : 'no pins moved\n');
+
+  if (process.argv.includes('--body') && moved.length) {
+    process.stdout.write(`\n${buildBumpBody({ moved })}\n`);
+  }
 }
 
 function map() {
