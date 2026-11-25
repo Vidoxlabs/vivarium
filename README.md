@@ -110,6 +110,9 @@ Already cloned it without the systems? Run `git submodule update --init --recurs
 | [templates/agent-setup/](templates/agent-setup/) | The agent schema, the setup script, and three generic example agents |
 | [docs/vision/design-brief.md](docs/vision/design-brief.md) | The living product brief: direction, not claims |
 | [docs/adr/](docs/adr/) | The decision records, from the umbrella layout to the web app's context routes |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | How to work in the umbrella, and what belongs in a system instead |
+| [SECURITY.md](SECURITY.md) | Where to report a vulnerability, privately |
+| [TRADEMARKS.md](TRADEMARKS.md) | The name and mark note |
 
 ## License
 

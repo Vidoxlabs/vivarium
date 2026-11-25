@@ -1,0 +1,29 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security report
+    url: https://github.com/Vidoxlabs/.github/blob/main/SECURITY.md
+    about: Report a vulnerability privately. Never open a public issue for one.
+  - name: seed
+    url: https://github.com/Vidoxlabs/seed/issues
+    about: Issues about the harness floor, the contracts, or the provider adapters.
+  - name: capillary
+    url: https://github.com/Vidoxlabs/capillary/issues
+    about: Issues about context, retrieval, or relations.
+  - name: myosotis
+    url: https://github.com/Vidoxlabs/myosotis/issues
+    about: Issues about memory, consent, or forget.
+  - name: drosera
+    url: https://github.com/Vidoxlabs/drosera/issues
+    about: Issues about tools, skills, hooks, or cookbooks.
+  - name: aestivation
+    url: https://github.com/Vidoxlabs/aestivation/issues
+    about: Issues about plans, verdicts, questions, or the assembly gate.
+  - name: bloom
+    url: https://github.com/Vidoxlabs/bloom/issues
+    about: Issues about the desktop or web app, setup, or the head agent.
+  - name: trellis
+    url: https://github.com/Vidoxlabs/trellis/issues
+    about: Issues about probes, verdicts, or the family grid.
+  - name: Documentation hub
+    url: https://github.com/Vidoxlabs/docs/issues
+    about: Issues about the synced documentation pages.
