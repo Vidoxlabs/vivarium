@@ -1,0 +1,9 @@
+# Code owners for Vidoxlabs/vivarium.
+#
+# This file names an organisation team, never a personal handle. No maintainers
+# team exists yet in the organisation, so the rule stays commented out and a
+# pull request is not blocked waiting for a reviewer who cannot be found.
+# SETUP.md carries the checklist item: create the team, then uncomment the line
+# below and turn on "Require review from Code Owners" if the owner wants it.
+#
+# * @Vidoxlabs/maintainers

@@ -1,0 +1,38 @@
+name: Feature request
+description: A change to the umbrella tooling, the docs, or the way the tree is checked.
+title: "[feature] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A feature for a system belongs in that system's repository. This form is for the
+        umbrella: the pins, the checks, the workflows, and the prose.
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What is hard or impossible today, for whom.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you suggest
+      description: The smallest change that fixes the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: What else you considered
+    validations:
+      required: false
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope
+      options:
+        - label: This is about the umbrella, not about a system's code
+          required: true
+        - label: This would need a decision record
+          required: false

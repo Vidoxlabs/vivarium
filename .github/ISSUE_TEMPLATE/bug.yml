@@ -1,0 +1,51 @@
+name: Bug report
+description: Something in the umbrella tooling, a workflow, or the generated files is wrong.
+title: "[bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This repository is the umbrella for seven systems. If the bug is in the code of a
+        system, report it in that system's repository instead; the links are on the issue
+        chooser.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you ran, what you expected, and what you got.
+      placeholder: |
+        $ npm run check
+        ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected instead
+    validations:
+      required: true
+  - type: input
+    id: commit
+    attributes:
+      label: Commit
+      description: The commit you are on, short form.
+    validations:
+      required: false
+  - type: dropdown
+    id: node
+    attributes:
+      label: Node version
+      options:
+        - 22.13.1
+        - another 22.x
+        - 24.x
+        - something else
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: Paste output, not a picture of output. Remove private paths and addresses first.
+    validations:
+      required: false

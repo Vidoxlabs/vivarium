@@ -1,0 +1,59 @@
+name: System pin
+description: Ask for a pin move, or report that a pin is wrong or stale.
+title: "[pin] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The scheduled bump opens a pull request every six hours when a system's `main` has
+        moved. Use this form when the bump missed something, when a pin points at a commit
+        that is not on that system's `main`, or when you want a pin moved sooner.
+  - type: dropdown
+    id: system
+    attributes:
+      label: Which system
+      options:
+        - seed
+        - capillary
+        - myosotis
+        - drosera
+        - aestivation
+        - bloom
+        - trellis
+        - all seven
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of request
+      options:
+        - Move the pin to the latest main
+        - Move the pin to a specific commit
+        - The pin points at a commit that is not on main
+        - The bump did not notice a move
+        - The pinned tree fails its own tests
+    validations:
+      required: true
+  - type: input
+    id: commit
+    attributes:
+      label: Commit
+      description: For a specific commit, the full SHA. Leave blank otherwise.
+    validations:
+      required: false
+  - type: textarea
+    id: why
+    attributes:
+      label: Why now
+      description: What the move unblocks, or what the current pin breaks.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: A link to the commit or pull request in the system's repository, or the failing output.
+    validations:
+      required: false
