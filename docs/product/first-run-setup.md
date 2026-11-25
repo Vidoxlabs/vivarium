@@ -53,7 +53,7 @@ the setup screen renders data rather than a hand-written flow.
 - **No preselected option.** The screen opens with nothing chosen. There is no default in the
   schema, no default in the setup script, and no fallback in the app: an agent cannot start
   until the person picks. This is the rule the whole setup exists to protect
-  (ADR-0003).
+  ([ADR-0003](../adr/0003-first-run-setup-and-no-default-autonomy.md)).
 - **Copy**: "Pick a level. At 1 the agent asks about almost everything; at 5 it handles
   routine work and tells you afterwards. Nothing is chosen for you, and you can change it per
   kind of action later."

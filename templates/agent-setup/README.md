@@ -28,7 +28,7 @@ The schema requires `autonomy.level` and gives it no `default` anywhere. The set
 autonomy screen has no preselected choice. `npm test` fails if a `default` keyword appears in
 the schema, or if an example carries a level a running agent could hold. An agent therefore
 cannot start until a person picks a level, and every later question the agent asks quotes the
-setting that caused it. The decision is ADR-0003 in `docs/adr/`.
+setting that caused it. The decision is [ADR-0003](../../docs/adr/0003-first-run-setup-and-no-default-autonomy.md).
 
 ## Which parts of JSON Schema are checked
 
