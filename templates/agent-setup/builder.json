@@ -7,7 +7,7 @@
   "workflowStyle": "advanced",
   "autonomy": {
     "level": "chosen-in-setup",
-    "overrides": { "read": 5, "write": 3, "send": 1, "spend": 1, "delete": 1 }
+    "overrides": { "read": 5, "write": 3, "external": 1, "spend": 1, "credential": 1 }
   },
   "questions": {
     "delivery": "inline"

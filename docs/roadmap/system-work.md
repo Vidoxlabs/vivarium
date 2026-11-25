@@ -13,7 +13,7 @@ because the other slices read them.
 | --- | --- | --- | --- |
 | S1 | `agent.definition` record: id, display name, character, job, workflow style, model routes, context routes, tool grants, memory scope, standing rules, packs | [agent schema](../../templates/agent-setup/agent.schema.json), [first-run setup](../product/first-run-setup.md) | planned |
 | S2 | `setup.answers` record: one entry per answered screen, with the setup script version | [setup script](../../templates/agent-setup/setup-script.json) | planned |
-| S3 | `autonomy.policy` record: level plus per-action-class overrides, read on every action, with no default value | [ADR-0003](../adr/0003-first-run-setup-and-no-default-autonomy.md) | planned |
+| S3 | `autonomy.policy` record: level plus per-action-class overrides over read, write, external, spend, and credential, read on every action, with no default value | [ADR-0003](../adr/0003-first-run-setup-and-no-default-autonomy.md) | planned |
 | S4 | Route kinds on the model ladder: subscription, own key, local model, each a kind plus a label, never a credential | [ADR-0004](../adr/0004-model-access-routes.md), [model access](../product/model-access.md) | planned |
 | S5 | A question record: the action, the setting that caused it, the target, and the answer | [first-run setup](../product/first-run-setup.md) | planned |
 

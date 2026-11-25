@@ -42,14 +42,14 @@
       "id": "autonomy",
       "title": "What it may do without asking",
       "explanationKey": "setup.autonomy.explanation",
-      "explanation": "Pick a level. At 1 the agent asks about almost everything; at 5 it handles routine work and tells you afterwards. Nothing is chosen for you, and you can change it per kind of action later.",
+      "explanation": "Pick a level. At 1 the agent proposes every step; at 5 it acts within budgets and standing rules and you read the journal afterwards. Nothing is chosen for you, credentials always ask, and you can change it per kind of action later.",
       "changeLaterAt": "settings.autonomy.level",
       "choices": [
-        { "value": 1, "label": "1: ask me about almost everything" },
-        { "value": 2, "label": "2: ask me before anything that leaves this computer" },
-        { "value": 3, "label": "3: handle your own files, ask before sending" },
-        { "value": 4, "label": "4: handle routine work, ask about money and deletions" },
-        { "value": 5, "label": "5: handle routine work and tell me afterwards" }
+        { "value": 1, "label": "1 · Ask me first: it proposes every step and you approve each one" },
+        { "value": 2, "label": "2 · Work alongside: it plans with you and does reversible steps" },
+        { "value": 3, "label": "3 · Check in: it leads the work and asks when a preference or fact is missing" },
+        { "value": 4, "label": "4 · Handle it: it acts on its own except blockers, credentials, spending, and irreversible actions" },
+        { "value": 5, "label": "5 · Run in the background: it acts within budgets and standing rules, and you can stop it" }
       ]
     },
     {

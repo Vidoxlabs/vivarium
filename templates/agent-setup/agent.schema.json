@@ -64,18 +64,18 @@
             { "type": "integer", "minimum": 1, "maximum": 5 },
             { "const": "chosen-in-setup" }
           ],
-          "description": "1 asks about almost everything, 5 does routine work without asking. Never preselected."
+          "description": "1 Ask me first, 2 Work alongside, 3 Check in, 4 Handle it, 5 Run in the background. Never preselected."
         },
         "overrides": {
           "type": "object",
           "additionalProperties": false,
-          "description": "A per-action-class level, for people who want to answer differently by kind of action.",
+          "description": "A per-action-class level, for people who want to answer differently by kind of action. The five classes are the ones the design brief uses: read, reversible write, external or irreversible, spend, and credential. Credentials ask at every level.",
           "properties": {
             "read": { "$ref": "#/$defs/level" },
             "write": { "$ref": "#/$defs/level" },
-            "send": { "$ref": "#/$defs/level" },
+            "external": { "$ref": "#/$defs/level" },
             "spend": { "$ref": "#/$defs/level" },
-            "delete": { "$ref": "#/$defs/level" }
+            "credential": { "$ref": "#/$defs/level" }
           }
         }
       }
