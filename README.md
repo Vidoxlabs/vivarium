@@ -106,6 +106,8 @@ Already cloned it without the systems? Run `git submodule update --init --recurs
 | [videsign](https://github.com/Vidoxlabs/videsign) | The design canon, including the family banner system |
 | [docs/system-map.md](docs/system-map.md) | The generated map and the full pin table |
 | [AGENTS.md](AGENTS.md) | The context file a code agent reads before touching the tree |
+| [docs/product/](docs/product/) | The product specs: naming, first-run setup, model access, context access |
+| [templates/agent-setup/](templates/agent-setup/) | The agent schema, the setup script, and three generic example agents |
 
 ## License
 

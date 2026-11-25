@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Vidoxlabs/vivarium/templates/agent-setup/agent.schema.json",
+  "title": "Agent definition",
+  "description": "One agent as the person defines it in first-run setup. This is a specification: bloom renders the setup, seed records the definition, and drosera supplies the tools. The autonomy level is required and has no default anywhere, because the person chooses it.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "id",
+    "displayName",
+    "character",
+    "job",
+    "workflowStyle",
+    "autonomy",
+    "questions",
+    "modelRoutes",
+    "contextRoutes",
+    "toolGrants",
+    "memoryScope",
+    "standingRules",
+    "packs"
+  ],
+  "properties": {
+    "schema": {
+      "const": 1,
+      "description": "Version of this definition shape."
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{1,62}$",
+      "description": "Stable identifier, unique within the person's user data."
+    },
+    "displayName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 60,
+      "description": "The name the person gives the agent. Theirs, not ours."
+    },
+    "character": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 400,
+      "description": "Short description of who the agent is, in the person's words."
+    },
+    "job": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 400,
+      "description": "What the agent is for: the work it should take on."
+    },
+    "workflowStyle": {
+      "enum": ["simple", "advanced"],
+      "description": "simple hides the machinery; advanced shows plans, tool calls, and settings as the work runs."
+    },
+    "autonomy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level"],
+      "description": "Required, with no default. 'chosen-in-setup' is the placeholder an example carries until the person picks a level; it is not a level a running agent can hold.",
+      "properties": {
+        "level": {
+          "oneOf": [
+            { "type": "integer", "minimum": 1, "maximum": 5 },
+            { "const": "chosen-in-setup" }
+          ],
+          "description": "1 asks about almost everything, 5 does routine work without asking. Never preselected."
+        },
+        "overrides": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "A per-action-class level, for people who want to answer differently by kind of action.",
+          "properties": {
+            "read": { "$ref": "#/$defs/level" },
+            "write": { "$ref": "#/$defs/level" },
+            "send": { "$ref": "#/$defs/level" },
+            "spend": { "$ref": "#/$defs/level" },
+            "delete": { "$ref": "#/$defs/level" }
+          }
+        }
+      }
+    },
+    "questions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["delivery"],
+      "description": "How the agent reaches the person with a question.",
+      "properties": {
+        "delivery": {
+          "enum": ["inbox", "inline", "digest"],
+          "description": "inbox holds questions for when the person returns; inline asks in the moment; digest batches them."
+        },
+        "quietHours": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["start", "end"],
+          "description": "Local times when nothing may interrupt.",
+          "properties": {
+            "start": { "type": "string", "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$" },
+            "end": { "type": "string", "pattern": "^([01][0-9]|2[0-3]):[0-5][0-9]$" }
+          }
+        }
+      }
+    },
+    "modelRoutes": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "description": "Ordered routes to a model. Kinds only: no keys, no endpoints, no account details.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind"],
+        "properties": {
+          "kind": { "enum": ["subscription", "api-key", "local-model"] },
+          "label": { "type": "string", "minLength": 1, "maxLength": 60 },
+          "note": { "type": "string", "maxLength": 200 }
+        }
+      }
+    },
+    "contextRoutes": {
+      "type": "array",
+      "maxItems": 8,
+      "description": "Where the agent may read from. The web app reaches device context only through these opt-in routes.",
+      "items": { "enum": ["upload", "oauth-connector", "browser-extension", "agent-browser", "paired-companion"] }
+    },
+    "toolGrants": {
+      "type": "array",
+      "maxItems": 64,
+      "description": "Tool faces the agent may use, by drosera tool identifier.",
+      "items": { "type": "string", "pattern": "^[a-z][a-z0-9.-]*$" }
+    },
+    "memoryScope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scope", "consent"],
+      "description": "What the agent may keep, and who else can see it.",
+      "properties": {
+        "scope": { "enum": ["agent", "shared"] },
+        "consent": { "enum": ["ask-each-time", "ask-once"] }
+      }
+    },
+    "standingRules": {
+      "type": "array",
+      "maxItems": 32,
+      "description": "Short rules the person set for this agent, in their own words.",
+      "items": { "type": "string", "minLength": 1, "maxLength": 200 }
+    },
+    "packs": {
+      "type": "array",
+      "maxItems": 32,
+      "description": "Cookbook packs the agent starts with.",
+      "items": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" }
+    }
+  },
+  "$defs": {
+    "level": {
+      "oneOf": [
+        { "type": "integer", "minimum": 1, "maximum": 5 },
+        { "const": "chosen-in-setup" }
+      ]
+    }
+  }
+}

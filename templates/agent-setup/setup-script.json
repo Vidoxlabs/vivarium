@@ -1,0 +1,106 @@
+{
+  "schema": 1,
+  "title": "First-run setup",
+  "status": "specified",
+  "note": "The eight steps the setup screen renders, in order. Every step records where the person can change the answer later. The autonomy step carries no preselected option.",
+  "steps": [
+    {
+      "id": "welcome",
+      "title": "What this is",
+      "explanationKey": "setup.welcome.explanation",
+      "explanation": "Vivarium gives you an agent you raise yourself. It remembers what you let it remember, asks before it acts outside your bounds, and shows you what it did. Setup takes a few minutes and every answer can be changed later.",
+      "changeLaterAt": "settings.about",
+      "choices": [
+        { "value": "begin", "label": "Begin setup" },
+        { "value": "look-around", "label": "Look around first, finish later", "changeLaterAt": "settings.setup.resume" }
+      ]
+    },
+    {
+      "id": "model-routes",
+      "title": "Where the agent thinks",
+      "explanationKey": "setup.modelRoutes.explanation",
+      "explanation": "Choose at least one route to a model. A subscription you already pay for, your own API key, or a model running on this machine. Keys stay with you: the desktop app keeps them in this computer's credential store.",
+      "changeLaterAt": "settings.models.routes",
+      "choices": [
+        { "value": "subscription", "label": "Use a subscription I already have" },
+        { "value": "api-key", "label": "Use my own API key" },
+        { "value": "local-model", "label": "Use a model on this machine" }
+      ]
+    },
+    {
+      "id": "workflow-style",
+      "title": "How much you want to see",
+      "explanationKey": "setup.workflowStyle.explanation",
+      "explanation": "Simple keeps the machinery out of the way and shows the result. Advanced shows the plan, the tools it used, and the settings behind each decision while the work runs.",
+      "changeLaterAt": "settings.workflow.style",
+      "choices": [
+        { "value": "simple", "label": "Simple" },
+        { "value": "advanced", "label": "Advanced" }
+      ]
+    },
+    {
+      "id": "autonomy",
+      "title": "What it may do without asking",
+      "explanationKey": "setup.autonomy.explanation",
+      "explanation": "Pick a level. At 1 the agent asks about almost everything; at 5 it handles routine work and tells you afterwards. Nothing is chosen for you, and you can change it per kind of action later.",
+      "changeLaterAt": "settings.autonomy.level",
+      "choices": [
+        { "value": 1, "label": "1: ask me about almost everything" },
+        { "value": 2, "label": "2: ask me before anything that leaves this computer" },
+        { "value": 3, "label": "3: handle your own files, ask before sending" },
+        { "value": 4, "label": "4: handle routine work, ask about money and deletions" },
+        { "value": 5, "label": "5: handle routine work and tell me afterwards" }
+      ]
+    },
+    {
+      "id": "questions",
+      "title": "How it should reach you",
+      "explanationKey": "setup.questions.explanation",
+      "explanation": "Choose where questions land, and when nothing may interrupt. Every question names the setting that caused it, with a Change link.",
+      "changeLaterAt": "settings.questions.delivery",
+      "choices": [
+        { "value": "inbox", "label": "Hold them in an inbox for when I return" },
+        { "value": "inline", "label": "Ask me in the moment" },
+        { "value": "digest", "label": "Batch them into one summary" }
+      ]
+    },
+    {
+      "id": "context-routes",
+      "title": "What it may read",
+      "explanationKey": "setup.contextRoutes.explanation",
+      "explanation": "Turn on the routes you want. On the web, the agent reaches your device only through these: files you drop in, connected accounts, a browser extension, its own browser, or a paired companion. You can see and revoke each route at any time.",
+      "changeLaterAt": "settings.context.routes",
+      "choices": [
+        { "value": "upload", "label": "Files I upload or drag in" },
+        { "value": "oauth-connector", "label": "Accounts I connect" },
+        { "value": "browser-extension", "label": "A browser extension on pages I choose" },
+        { "value": "agent-browser", "label": "The agent's own browser" },
+        { "value": "paired-companion", "label": "A companion on my device" }
+      ]
+    },
+    {
+      "id": "first-agent",
+      "title": "Your first agent",
+      "explanationKey": "setup.firstAgent.explanation",
+      "explanation": "Start from a template or from a blank page. Give it a name, a character in your own words, and the job you want it to take on. Templates are examples; the agent is yours.",
+      "changeLaterAt": "settings.agents.identity",
+      "choices": [
+        { "value": "planner", "label": "Planner" },
+        { "value": "builder", "label": "Builder" },
+        { "value": "researcher", "label": "Researcher" },
+        { "value": "blank", "label": "Start from a blank page" }
+      ]
+    },
+    {
+      "id": "review",
+      "title": "What you chose",
+      "explanationKey": "setup.review.explanation",
+      "explanation": "One screen with every answer and a Change link beside it. Nothing starts until you press Finish, and each line points at the setting it came from.",
+      "changeLaterAt": "settings.setup.summary",
+      "choices": [
+        { "value": "finish", "label": "Finish" },
+        { "value": "back", "label": "Go back and change something" }
+      ]
+    }
+  ]
+}
