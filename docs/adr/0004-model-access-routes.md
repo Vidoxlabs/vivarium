@@ -1,9 +1,21 @@
 # 0004: Model access routes
 
-- **Status**: Accepted
-- **Date**: 2026-11-25
+- **Status**: Accepted (owner confirmation, 27 November 2026)
+- **Date**: 2026-11-27
 - **Decided by**: the owner
 - **Amends**: none
+
+**Owner confirmation.** On 27 November 2026, in chat, the owner wrote: "I confirm that section
+11 of my 26 November 2026 continuation directive ratifies the architectural substance of
+Vivarium ADR-0002, ADR-0003 and ADR-0004."
+The substance accepted is this: Vivarium launches with officially supported subscription
+access, the person's own API keys, and local models, with no hosted-credit plan and no
+credential broker at launch. The confirmation chooses no model provider and makes no
+decision on where keys are stored. The key-storage bullets below (the operating system's
+credential store, the paired companion as the web default, and opt-in storage on the web
+account), the vendor-runtime rule that depends on the companion of ADR-0005, the terms for
+any later hosted credit, and the schema and scan mechanics go beyond the
+confirmation and are not owner-confirmed.
 
 ## Context
 
@@ -74,3 +86,4 @@ run one, and it makes the first run a hardware conversation.
 | Date | Change | By |
 | --- | --- | --- |
 | 2026-11-25 | First written | |
+| 2026-11-27 | Accepted on the owner's confirmation, quoted above, with the scope of that confirmation stated | a maintainer, recording the owner's decision |

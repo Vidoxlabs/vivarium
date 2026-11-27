@@ -7,9 +7,9 @@ discussion: the discussion belongs in the pull request that lands it.
 | Record | Title | Status |
 | --- | --- | --- |
 | [0001](0001-umbrella-with-submodules.md) | Umbrella with git submodules | Proposed |
-| [0002](0002-internal-agents-use-the-public-setup.md) | Internal agents use the public setup | Accepted, owner decision, 25 November 2026 |
-| [0003](0003-first-run-setup-and-no-default-autonomy.md) | First-run setup and no default autonomy | Accepted |
-| [0004](0004-model-access-routes.md) | Model access routes | Accepted |
+| [0002](0002-internal-agents-use-the-public-setup.md) | Internal agents use the public setup | Accepted, owner confirmation, 27 November 2026 |
+| [0003](0003-first-run-setup-and-no-default-autonomy.md) | First-run setup and no default autonomy | Accepted, owner confirmation, 27 November 2026 |
+| [0004](0004-model-access-routes.md) | Model access routes | Accepted, owner confirmation, 27 November 2026 |
 | [0005](0005-web-app-context-routes.md) | Web-app context routes | Accepted |
 
 ## Statuses

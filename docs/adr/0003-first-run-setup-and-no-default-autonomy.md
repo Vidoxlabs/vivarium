@@ -1,9 +1,21 @@
 # 0003: First-run setup and no default autonomy
 
-- **Status**: Accepted
-- **Date**: 2026-11-25
+- **Status**: Accepted (owner confirmation, 27 November 2026)
+- **Date**: 2026-11-27
 - **Decided by**: the owner
 - **Amends**: none
+
+**Owner confirmation.** On 27 November 2026, in chat, the owner wrote: "I confirm that section
+11 of my 26 November 2026 continuation directive ratifies the architectural substance of
+Vivarium ADR-0002, ADR-0003 and ADR-0004."
+The substance accepted is this: first-run setup is scripted, no autonomy level is set by
+default, each configuration choice is made explicitly, and every question links to the
+setting that caused it. An incomplete configuration is not the same as an agent that is
+ready to run: making the setup choices is required before a first run and does not by itself
+make an agent runnable. The exact step list and order, the context-routes step (whose routes
+are the subject of ADR-0005, which this confirmation does not cover), the question-card
+wording, and the schema and test mechanics go beyond the confirmation and are not
+owner-confirmed.
 
 ## Context
 
@@ -61,3 +73,4 @@ explanation.
 | Date | Change | By |
 | --- | --- | --- |
 | 2026-11-25 | First written | |
+| 2026-11-27 | Accepted on the owner's confirmation, quoted above, with the scope of that confirmation stated | a maintainer, recording the owner's decision |

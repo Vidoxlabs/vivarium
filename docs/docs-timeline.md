@@ -3,6 +3,13 @@
 Newest first. One entry per slice: what landed, the pull request, and the pins at that time.
 Times are ET.
 
+## 27 November 2026
+
+**Owner confirmation of three decision records** — PR #13. ADR-0002, ADR-0003 and ADR-0004 move
+to Accepted on the owner's confirmation of this date, quoted in each record, and each record now
+states what the confirmation covers and which of its details go beyond it. ADR-0005 is
+unchanged. Pins unchanged.
+
 ## 25 November 2026
 
 **Brief vocabulary in the agent setup** — PR #10. The schema's `autonomy.overrides` now uses the
