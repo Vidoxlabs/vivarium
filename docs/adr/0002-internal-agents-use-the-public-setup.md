@@ -1,9 +1,18 @@
 # 0002: Internal agents use the public setup
 
-- **Status**: Accepted (owner decision, 25 November 2026)
-- **Date**: 2026-11-25
+- **Status**: Accepted (owner confirmation, 27 November 2026)
+- **Date**: 2026-11-27
 - **Decided by**: the owner
 - **Amends**: none
+
+**Owner confirmation.** On 27 November 2026, in chat, the owner wrote: "I confirm that section
+11 of my 26 November 2026 continuation directive ratifies the architectural substance of
+Vivarium ADR-0002, ADR-0003 and ADR-0004."
+The substance accepted is this: internal agents use the same public setup, templates and
+editors as any user, and their configurations live in user data, not in a private product
+overlay. The rejections of a private branch and a private fork below are read as forms of an
+overlay; the confirmation does not name them. How public CI scans for names, and how many
+example templates ship, go beyond the confirmation and are not owner-confirmed.
 
 ## Context
 
@@ -58,3 +67,4 @@ and the drift is invisible until an internal agent behaves differently from what
 | Date | Change | By |
 | --- | --- | --- |
 | 2026-11-25 | First written from the owner's decision | |
+| 2026-11-27 | Accepted on the owner's confirmation, quoted above, with the scope of that confirmation stated | a maintainer, recording the owner's decision |
